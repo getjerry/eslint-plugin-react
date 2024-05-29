@@ -1,3 +1,9 @@
+# Fork updates
+
+- Rule `jsx-key` now supports checking any `map` functions in jsx
+
+
+
 # `eslint-plugin-react` <sup>[![Version Badge][npm-version-svg]][package-url]</sup>
 
 ===================

@@ -42,6 +42,7 @@ ruleTester.run('jsx-key', rule, {
     { code: '[<App key={0} />, <App key={1} />];' },
     { code: '[1, 2, 3].map(function(x) { return <App key={x} /> });' },
     { code: '[1, 2, 3].map(x => <App key={x} />);' },
+    { code: 'map([1, 2, 3],x => <App key={x} />);' },
     { code: '[1, 2 ,3].map(x => x && <App x={x} key={x} />);' },
     { code: '[1, 2 ,3].map(x => x ? <App x={x} key="1" /> : <OtherApp x={x} key="2" />);' },
     { code: '[1, 2, 3].map(x => { return <App key={x} /> });' },
@@ -225,6 +226,10 @@ ruleTester.run('jsx-key', rule, {
     },
     {
       code: '[1, 2 ,3].map(x => <App />);',
+      errors: [{ messageId: 'missingIterKey' }],
+    },
+    {
+      code: 'map([1, 2 ,3],x => <App />);',
       errors: [{ messageId: 'missingIterKey' }],
     },
     {
